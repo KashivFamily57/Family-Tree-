@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>मेरा परिवार</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f1e8;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #5a3e2b;
+    }
+
+    .person {
+      display: inline-block;
+      background: white;
+      border: 2px solid #8b6f47;
+      border-radius: 15px;
+      padding: 15px 25px;
+      margin: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .person:active {
+      transform: scale(0.97);
+    }
+
+    .info {
+      background: white;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      display: none;
+    }
+
+    .back {
+      background: #5a3e2b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🌳 मेरा परिवार</h1>
+
+  <p>किसी नाम पर क्लिक करके परिवार की जानकारी देखें</p>
+
+  <!-- पहला व्यक्ति -->
+
+  <div
+    class="person"
+    onclick="showInfo('ancestor')">
+
+    👴 परदादा के परदादा
+
+  </div>
+
+
+  <!-- उनकी जानकारी -->
+
+  <div id="ancestor" class="info">
+
+    <h2>👴 परदादा के परदादा</h2>
+
+    <p><b>नाम:</b> यहाँ नाम लिखेंगे</p>
+
+    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+
+    <p><b>गाँव:</b> यहाँ गाँव का नाम लिखेंगे</p>
+
+    <hr>
+
+    <h3>परिवार</h3>
+
+    <div
+      class="person"
+      onclick="showInfo('grandfather')">
+
+      👴 दादा
+
+    </div>
+
+    <div
+      class="person"
+      onclick="showInfo('grandmother')">
+
+      👵 दादी
+
+    </div>
+
+  </div>
+
+
+  <!-- दादा -->
+
+  <div id="grandfather" class="info">
+
+    <h2>👴 दादा</h2>
+
+    <p><b>नाम:</b> यहाँ दादा का नाम लिखेंगे</p>
+
+    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+
+    <p><b>गाँव:</b> यहाँ जानकारी लिखेंगे</p>
+
+    <hr>
+
+    <h3>परिवार</h3>
+
+    <div
+      class="person"
+      onclick="showInfo('father')">
+
+      👨 पिता
+
+    </div>
+
+  </div>
+
+
+  <!-- दादी -->
+
+  <div id="grandmother" class="info">
+
+    <h2>👵 दादी</h2>
+
+    <p><b>नाम:</b> यहाँ दादी का नाम लिखेंगे</p>
+
+    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+
+    <p><b>गाँव:</b> यहाँ जानकारी लिखेंगे</p>
+
+  </div>
+
+
+  <!-- पिता -->
+
+  <div id="father" class="info">
+
+    <h2>👨 पिता</h2>
+
+    <p><b>नाम:</b> यहाँ पिता का नाम लिखेंगे</p>
+
+    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+
+    <hr>
+
+    <h3>बच्चे</h3>
+
+    <div class="person">
+
+      👦 मैं
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function showInfo(id) {
+
+      // सभी जानकारी छुपाएँ
+
+      const boxes = document.querySelectorAll(".info");
+
+      boxes.forEach(function(box) {
+        box.style.display = "none";
+      });
+
+
+      // जिस व्यक्ति पर क्लिक किया है उसकी जानकारी दिखाएँ
+
+      const selected = document.getElementById(id);
+
+      if (selected) {
+
+        selected.style.display = "block";
+
+        selected.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
