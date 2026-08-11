@@ -1,206 +1,294 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="gu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>मेरा परिवार</title>
+  <title>મારો પરિવાર 🌳</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f1e8;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
+    * {
+      box-sizing: border-box;
     }
 
-    h1 {
-      color: #5a3e2b;
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Gujarati", sans-serif;
+      background: #f7f1e5;
+      color: #3f3024;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 15px 20px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+      color: #65432c;
+    }
+
+    header p {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .tree {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 3px solid #8b6f47;
+      border-radius: 22px;
+      padding: 25px;
+      margin: 20px auto;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 28px;
     }
 
     .person {
       display: inline-block;
-      background: white;
-      border: 2px solid #8b6f47;
-      border-radius: 15px;
-      padding: 15px 25px;
+      min-width: 230px;
+      padding: 18px;
       margin: 10px;
+      background: #fffdf9;
+      border: 2px solid #9a7b51;
+      border-radius: 18px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: 0.2s;
+      font-size: 20px;
     }
 
-    .person:active {
-      transform: scale(0.97);
+    .person:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgba(0,0,0,0.15);
     }
 
-    .info {
-      background: white;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 15px;
+    .icon {
+      font-size: 35px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .details {
       display: none;
+      margin-top: 15px;
+      padding: 18px;
+      background: #faf6ee;
+      border-radius: 15px;
+      text-align: left;
+      line-height: 1.9;
+      font-size: 18px;
     }
 
-    .back {
-      background: #5a3e2b;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
+    .children {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .line {
+      width: 3px;
+      height: 35px;
+      background: #8b6f47;
+      margin: auto;
+    }
+
+    .family-title {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 25px 0 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      color: #765d43;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 34px;
+      }
+
+      header p {
+        font-size: 17px;
+      }
+
+      .person {
+        width: 100%;
+        margin: 8px 0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>🌳 मेरा परिवार</h1>
+<header>
+  <h1>🌳 મારો પરિવાર</h1>
+  <p>મારા પરિવારની યાદો અને માહિતી</p>
+</header>
 
-  <p>किसी नाम पर क्लिक करके परिवार की जानकारी देखें</p>
+<div class="tree">
 
-  <!-- पहला व्यक्ति -->
+  <!-- પરદાદાના પરદાદા -->
 
-  <div
-    class="person"
-    onclick="showInfo('ancestor')">
+  <div class="card">
+    <h2>👴 પૂર્વજ</h2>
 
-    👴 परदादा के परदादा
+    <div class="person" onclick="toggle('vitthal')">
+      <span class="icon">👴</span>
+      <strong>વિઠ્ઠલ દાદા</strong>
 
+      <div id="vitthal" class="details">
+        <b>નામ:</b> વિઠ્ઠલ દાદા<br>
+        <b>ગામ:</b> વાંકડા<br>
+        <b>લગભગ જન્મ વર્ષ:</b> માહિતી ઉપલબ્ધ નથી
+      </div>
+    </div>
   </div>
 
+  <div class="line"></div>
 
-  <!-- उनकी जानकारी -->
+  <!-- દાદા અને દાદી -->
 
-  <div id="ancestor" class="info">
+  <div class="card">
 
-    <h2>👴 परदादा के परदादा</h2>
-
-    <p><b>नाम:</b> यहाँ नाम लिखेंगे</p>
-
-    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
-
-    <p><b>गाँव:</b> यहाँ गाँव का नाम लिखेंगे</p>
-
-    <hr>
-
-    <h3>परिवार</h3>
-
-    <div
-      class="person"
-      onclick="showInfo('grandfather')">
-
-      👴 दादा
-
+    <div class="family-title">
+      👨‍👩‍👧‍👦 દાદા અને દાદી
     </div>
 
-    <div
-      class="person"
-      onclick="showInfo('grandmother')">
+    <div class="children">
 
-      👵 दादी
+      <div class="person" onclick="toggle('shivlal')">
+        <span class="icon">👴</span>
+        <strong>શિવલાલ ભાઈ</strong>
 
-    </div>
+        <div id="shivlal" class="details">
+          <b>નામ:</b> શિવલાલ ભાઈ વિઠ્ઠલ ભાઈ<br>
+          <b>ગામ:</b> વાંકડા<br>
+          <b>પત્ની:</b> કાશીબેન<br>
+          <b>બાળકો:</b> 5 (4 ભાઈ, 1 બહેન)
+        </div>
+      </div>
 
-  </div>
+      <div class="person" onclick="toggle('kashiben')">
+        <span class="icon">👵</span>
+        <strong>કાશીબેન</strong>
 
-
-  <!-- दादा -->
-
-  <div id="grandfather" class="info">
-
-    <h2>👴 दादा</h2>
-
-    <p><b>नाम:</b> यहाँ दादा का नाम लिखेंगे</p>
-
-    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
-
-    <p><b>गाँव:</b> यहाँ जानकारी लिखेंगे</p>
-
-    <hr>
-
-    <h3>परिवार</h3>
-
-    <div
-      class="person"
-      onclick="showInfo('father')">
-
-      👨 पिता
+        <div id="kashiben" class="details">
+          <b>નામ:</b> કાશીબેન શિવલાલ ભાઈ<br>
+          <b>ગામ:</b> વાંકડા<br>
+          <b>પતિ:</b> શિવલાલ ભાઈ<br>
+          <b>બાળકો:</b> 5 (4 ભાઈ, 1 બહેન)
+        </div>
+      </div>
 
     </div>
 
   </div>
 
+  <div class="line"></div>
 
-  <!-- दादी -->
+  <!-- બાળકો -->
 
-  <div id="grandmother" class="info">
+  <div class="card">
 
-    <h2>👵 दादी</h2>
+    <h2>👨‍👩‍👧‍👦 બાળકો</h2>
 
-    <p><b>नाम:</b> यहाँ दादी का नाम लिखेंगे</p>
+    <p>
+      શિવલાલ ભાઈ અને કાશીબેનના કુલ
+      <strong>5 બાળકો</strong> છે.
+    </p>
 
-    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+    <div class="children">
 
-    <p><b>गाँव:</b> यहाँ जानकारी लिखेंगे</p>
+      <div class="person" onclick="toggle('child1')">
+        <span class="icon">👨</span>
+        <strong>ભાઈ 1</strong>
 
-  </div>
+        <div id="child1" class="details">
+          <b>નામ:</b> અહીં નામ લખો<br>
+          <b>ગામ:</b> અહીં ગામ લખો<br>
+          <b>જન્મ:</b> અહીં માહિતી લખો
+        </div>
+      </div>
 
+      <div class="person" onclick="toggle('child2')">
+        <span class="icon">👨</span>
+        <strong>ભાઈ 2</strong>
 
-  <!-- पिता -->
+        <div id="child2" class="details">
+          <b>નામ:</b> અહીં નામ લખો<br>
+          <b>ગામ:</b> અહીં ગામ લખો<br>
+          <b>જન્મ:</b> અહીં માહિતી લખો
+        </div>
+      </div>
 
-  <div id="father" class="info">
+      <div class="person" onclick="toggle('child3')">
+        <span class="icon">👨</span>
+        <strong>ભાઈ 3</strong>
 
-    <h2>👨 पिता</h2>
+        <div id="child3" class="details">
+          <b>નામ:</b> અહીં નામ લખો<br>
+          <b>ગામ:</b> અહીં ગામ લખો<br>
+          <b>જન્મ:</b> અહીં માહિતી લખો
+        </div>
+      </div>
 
-    <p><b>नाम:</b> यहाँ पिता का नाम लिखेंगे</p>
+      <div class="person" onclick="toggle('child4')">
+        <span class="icon">👨</span>
+        <strong>ભાઈ 4</strong>
 
-    <p><b>जन्म:</b> यहाँ जानकारी लिखेंगे</p>
+        <div id="child4" class="details">
+          <b>નામ:</b> અહીં નામ લખો<br>
+          <b>ગામ:</b> અહીં ગામ લખો<br>
+          <b>જન્મ:</b> અહીં માહિતી લખો
+        </div>
+      </div>
 
-    <hr>
+      <div class="person" onclick="toggle('child5')">
+        <span class="icon">👩</span>
+        <strong>બહેન</strong>
 
-    <h3>बच्चे</h3>
-
-    <div class="person">
-
-      👦 मैं
+        <div id="child5" class="details">
+          <b>નામ:</b> અહીં નામ લખો<br>
+          <b>ગામ:</b> અહીં ગામ લખો<br>
+          <b>જન્મ:</b> અહીં માહિતી લખો
+        </div>
+      </div>
 
     </div>
 
   </div>
 
+</div>
 
-  <script>
+<footer>
+  🌳 આપણા પરિવારની યાદો હંમેશા જીવંત રહે 🌳
+</footer>
 
-    function showInfo(id) {
+<script>
+  function toggle(id) {
+    const element = document.getElementById(id);
 
-      // सभी जानकारी छुपाएँ
-
-      const boxes = document.querySelectorAll(".info");
-
-      boxes.forEach(function(box) {
-        box.style.display = "none";
-      });
-
-
-      // जिस व्यक्ति पर क्लिक किया है उसकी जानकारी दिखाएँ
-
-      const selected = document.getElementById(id);
-
-      if (selected) {
-
-        selected.style.display = "block";
-
-        selected.scrollIntoView({
-          behavior: "smooth"
-        });
-
-      }
-
+    if (element.style.display === "block") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
     }
-
-  </script>
+  }
+</script>
 
 </body>
 </html>
